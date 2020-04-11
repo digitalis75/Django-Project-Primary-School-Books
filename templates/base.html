@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{% block page_title %}{% endblock %}</title>
     <!-- Complete CSS -->
@@ -10,16 +10,30 @@
 </head>
 <body>
     <!-- Navbar -->
-    <nav>
-        <ul>
-            {% if user.is_authenticated %}
-            <li><a href= "#">Profile</a></li>
-            <li><a href= "{% url 'logout' %}">Logout</a></li>
-            {% else %}
-            <li><a href= "{% url 'login' %}">Login</a></li>
-            <li><a href= "{% url 'registration' %}">Register</a></li>
-            {% endif %}
-        </ul>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #e3f2fd;">
+
+        <!-- Brand -->
+        <a class="navbar-brand" href="#">Brand</a>
+
+        <!-- Toggler/collapsible Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse " id="collapsibleNavbar">
+            <ul class="nav navbar-nav navbar-right mr-auto mt-2 mt-lg-0">
+                <li class="nav-item"><a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a></li>
+
+                {% if user.is_authenticated %}
+                <li class="nav-item"><a class="nav-link" href="#">Profile</a></li>
+                <li class="nav-item"><a class="nav-link" href= "{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                <li class="nav-item"><a class="nav-link" href= "{% url 'login' %}">Login</a></li>
+                <li class="nav-item"><a class="nav-link" href= "{% url 'registration' %}">Register</a></li>
+                {% endif %}
+            </ul>
+        </div>    
     </nav>
     <!-- Django messages -->
     {% if messages %}
@@ -31,10 +45,12 @@
     {% endif %}
 
     <!-- Page Content -->
-    <h1>{% block page_heading %}{% endblock %}</h1>
+    <div class="container-fluid" style="margin-top:80px">
+        <h1>{% block page_heading %}{% endblock %}</h1>
 
-    {% block content %}
-    {% endblock %}
+        {% block content %}
+        {% endblock %}
+    </div>
 
     <!-- Complete JavaScript -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
