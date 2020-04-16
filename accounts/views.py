@@ -13,7 +13,7 @@ def index(request):
 @login_required
 def logout(request):
     auth.logout(request)
-    messages.success(request, "You have been successfully logged out")
+    messages.warning(request, "You have been logged out")
     return redirect(reverse('index'))
 
 
@@ -32,8 +32,8 @@ def login(request):
                 messages.success(request, "You have successfully logged in!")
                 return redirect(reverse('index'))
             else:
-                login_form.add_error(None,
-                                     "Your username or password is incorrect")
+                messages.error(request,
+                               "Your username or password is incorrect")
     else:
         login_form = UserLoginForm()
     return render(request, 'login.html', {'login_form': login_form})
@@ -61,5 +61,6 @@ def registration(request):
                                "Unable to register your account at this time")
     else:
         registration_form = UserRegistrationForm()
-        return render(request, 'registration.html', {
+
+    return render(request, 'registration.html', {
             "registration_form": registration_form})
