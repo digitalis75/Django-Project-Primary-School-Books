@@ -1,7 +1,46 @@
+/* Navbar */
 .navbar-bg-color {
     background-color: #e3f2fd;
 }
 
+/* Page content */
 .page-content {
     margin-top: 80px;
+}
+
+/* Card */
+.card-style {
+    width: 14rem;
+    margin: 5px;
+}
+
+.col-6 {
+    padding: 0;
+}
+
+.col-sm-4 {
+    padding: 10px;
+}
+
+@media (max-width: 400px) {
+    .card-text-style {
+        font-size: 11px;
+        padding: 5px;    
+    }
+
+    .card-style {
+        width: 8rem;
+        margin: auto;
+    }
+
+    .button-style {
+    font-size: 12px;    
+    }
+}
+
+@media (min-width: 401px) and (max-width: 575px) {
+    .card-style {
+        width: 12rem;
+        margin: auto;
+    }
 }
