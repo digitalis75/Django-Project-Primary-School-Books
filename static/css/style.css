@@ -1,6 +1,7 @@
 /* Navbar */
 .navbar-bg-color {
-    background-color: #e3f2fd;
+    background-color: #9ecf16fd;
+    /* color: #fff; */
 }
 
 /* Page content */
@@ -23,14 +24,14 @@
 }
 
 @media (max-width: 400px) {
-    .card-text-style {
-        font-size: 11px;
-        padding: 5px;    
-    }
-
     .card-style {
         width: 8rem;
         margin: auto;
+    }
+
+    .card-text-style {
+        font-size: 11px;
+        padding: 5px 5px 15px;    
     }
 
     .button-style {
