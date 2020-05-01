@@ -1,8 +1,8 @@
 from django.db import models
 
 STATUS_CHOICES = (
-    ('IN_STOCK', 'In Stock'),
-    ('TEMP_OUT_OF_STOCK', 'Temporary Out of Stock'),
+    ('In Stock', 'In Stock'),
+    ('Temporary Out of Stock', 'Temporary Out of Stock'),
 )
 
 
