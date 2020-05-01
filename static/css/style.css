@@ -23,6 +23,14 @@
     padding: 10px;
 }
 
+.success {
+    color: green;
+}
+
+.danger {
+    color: red;
+}
+
 @media (max-width: 400px) {
     .card-style {
         width: 8rem;

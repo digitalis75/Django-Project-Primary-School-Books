@@ -12,6 +12,13 @@
                         <div class="card-body card-text-style">
                             <h5 class="card-title"><i class="fa fa-euro"></i>{{ product.price }}</h5>
                             <p class="card-text">{{ product.name }}<span class= "text-muted"> ({{ product.publisher }})</span></p>
+                            <div>
+                                {% if product.status == "In Stock" %}
+                                    <p class="success">{{ product.status }}</p>
+                                {% else %}
+                                    <p class="danger">{{ product.status }}</p>
+                                {% endif %}
+                            </div>    
                             <div class="text-center">
                             <form method="post" action="{% url 'add_to_cart' product.id %}">
                                 {% csrf_token %}

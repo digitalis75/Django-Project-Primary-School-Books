@@ -28,9 +28,9 @@
         <p><i>( {{ item.product.publisher }} )</i></p>
 
         {% if item.product.status == "In Stock" %}
-        <p style="color: green">{{ item.product.status }}</p>
+        <p class="success">{{ item.product.status }}</p>
         {% else %}
-        <p style="color: red">{{ item.product.status }}</p>
+        <p class="danger">{{ item.product.status }}</p>
         {% endif %}
         <div class="row">
             <div class="col-10 col-sm-7">
