@@ -1,7 +1,6 @@
 /* Navbar */
 .navbar-bg-color {
     background-color: #9ecf16fd;
-    /* color: #fff; */
 }
 
 /* Page content */
@@ -10,7 +9,8 @@
 }
 
 /* Card */
-.card-style {
+.card-style,
+.cart-image {
     width: 14rem;
     margin: 5px;
 }
@@ -43,5 +43,27 @@
     .card-style {
         width: 12rem;
         margin: auto;
+    }
+}
+
+/* Cart */
+
+.icon-style {
+    margin-right: 5px;
+}
+
+@media (max-width: 767.98px) {
+    .cart-image {
+        width: 8rem;
+        margin: auto;
+    }
+
+    .cart-info {
+        font-size: 12px;
+    }
+
+    .cart-price {
+        padding-right: 0px;
+        font-size: 16px;
     }
 }
