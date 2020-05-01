@@ -18,14 +18,20 @@
                                 {% else %}
                                     <p class="danger">{{ product.status }}</p>
                                 {% endif %}
-                            </div>    
+                            </div>
                             <div class="text-center">
-                            <form method="post" action="{% url 'add_to_cart' product.id %}">
-                                {% csrf_token %}
+                            {% if product.status == "In Stock" %}
+                                <form method="post" action="{% url 'add_to_cart' product.id %}">
+                                    {% csrf_token %}
+                                    <div>
+                                        <button class="btn btn-success button-style center" type="submit">Add to cart</button>
+                                    </div>
+                                </form>
+                            {% else %}
                                 <div>
-                                    <button class="btn btn-success button-style center" type="submit">Add to cart</button>
+                                    <a class="btn btn-warning button-style center" href= "">Awaiting Stock</a>
                                 </div>
-                            </form>
+                            {% endif %}   
                             </div>
                         </div>
                     </div>
