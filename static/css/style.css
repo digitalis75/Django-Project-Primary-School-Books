@@ -15,6 +15,10 @@
     margin: 5px;
 }
 
+.card-text {
+    color: rgb(70, 66, 66);
+}
+
 .col-6 {
     padding: 0;
 }
