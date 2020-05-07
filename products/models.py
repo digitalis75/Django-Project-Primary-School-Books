@@ -6,9 +6,10 @@ STATUS_CHOICES = (
 )
 
 
-# Create your models here.
+# Create your models here
 class Product(models.Model):
-    name = models.CharField(max_length=254, default='')
+    name = models.CharField(max_length=254, null=False, blank=False,
+                            default='')
     author = models.CharField(max_length=254, default='')
     school_level = models.CharField(max_length=40, default='')
     stage = models.CharField(max_length=40, default='')
@@ -19,10 +20,14 @@ class Product(models.Model):
     language = models.CharField(max_length=40, default='')
     pages = models.IntegerField()
     publication_year = models.IntegerField()
-    description = models.TextField()
+    description = models.TextField(null=True, blank=True)
+    slug = models.SlugField(null=False, blank=False, default='', unique=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     image = models.ImageField(upload_to='images')
     status = models.CharField(max_length=40, choices=STATUS_CHOICES)
+
+    class Meta:
+        unique_together = ('name', 'slug')
 
     def __str__(self):
         return self.name
