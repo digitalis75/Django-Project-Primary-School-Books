@@ -9,7 +9,6 @@ def view_cart(request):
 
 # Add a quantity of the specified product to the cart
 def add_to_cart(request, id):
-    # quantity = int(request.POST.get('quantity'))
     quantity = 1
     cart = request.session.get('cart', {})
     cart[id] = cart.get(id, quantity)
