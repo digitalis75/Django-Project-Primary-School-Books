@@ -35,6 +35,14 @@
     color: red;
 }
 
+.book-title {
+    color: green;
+}
+
+.img-size {
+    width: 18rem;
+}
+
 @media (max-width: 400px) {
     .card-style {
         width: 8rem;
@@ -49,12 +57,20 @@
     .button-style {
     font-size: 12px;    
     }
+
+    .img-size {
+        width: 10rem;
+    }
 }
 
 @media (min-width: 401px) and (max-width: 575px) {
     .card-style {
         width: 12rem;
         margin: auto;
+    }
+
+    .img-size {
+        width: 10rem;
     }
 }
 
@@ -77,5 +93,15 @@
     .cart-price {
         padding-right: 0px;
         font-size: 16px;
+    }
+
+    .img-size {
+        width: 10rem;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .img-size {
+        width: 12rem;
     }
 }
