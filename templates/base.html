@@ -56,6 +56,25 @@
                                 <!-- Links -->
                                 <li class="nav-item"><a class="nav-link" href="{% url 'index' %}">Home</a></li>
 
+                                <!-- Dropdown menu -->
+                                <li class="nav-item dropdown menu-area">
+                                    <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Primary Books
+                                    </a>
+                                    
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                       
+                                        <a class="dropdown-item" href="{% url 'search_by_class' stage='Junior_Infants' %}">Junior Infants</a>
+                                        <a class="dropdown-item" href="{% url 'search_by_class' stage='Senior_Infants' %}">Senior Infants</a>
+                                        <a class="dropdown-item" href="{% url 'search_by_class' stage='First_Class' %}">First Class</a>
+                                        <a class="dropdown-item" href="{% url 'search_by_class' stage='Second_Class' %}">Second Class</a>
+                                        <a class="dropdown-item" href="{% url 'search_by_class' stage='Third_Class' %}">Third Class</a>
+                                        <a class="dropdown-item" href="{% url 'search_by_class' stage='Fourth_Class' %}">Fourth Class</a>
+                                        <a class="dropdown-item" href="{% url 'search_by_class' stage='Fifth_Class' %}">Fifth Class</a>
+                                        <a class="dropdown-item" href="{% url 'search_by_class' stage='Sixth_Class' %}">Sixth Class</a>
+                                    </div>
+                                </li>
+
                                 {% if user.is_authenticated %}
                                 <li class="nav-item"><a class="nav-link" href="#">Profile</a></li>
                                 <li class="nav-item"><a class="nav-link" href= "{% url 'logout' %}">Logout</a></li>
