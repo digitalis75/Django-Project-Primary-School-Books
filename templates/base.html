@@ -11,6 +11,7 @@
     <!-- Complete CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="{% static 'css/style.css' %}" rel="stylesheet" type= "text/css"/>
+    <link href="{% static 'css/menu.css' %}" rel="stylesheet" type= "text/css"/>
     <link href="{% static 'fontawesome/css/font-awesome.min.css' %}" rel="stylesheet">
 
 </head>
@@ -56,25 +57,17 @@
                                 <!-- Links -->
                                 <li class="nav-item"><a class="nav-link" href="{% url 'index' %}">Home</a></li>
 
-                                <!-- Dropdown menu -->
-                                <li class="nav-item dropdown menu-area">
-                                    <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Primary Books
-                                    </a>
-                                    
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                       
-                                        <a class="dropdown-item" href="{% url 'search_by_class' stage='Junior_Infants' %}">Junior Infants</a>
-                                        <a class="dropdown-item" href="{% url 'search_by_class' stage='Senior_Infants' %}">Senior Infants</a>
-                                        <a class="dropdown-item" href="{% url 'search_by_class' stage='First_Class' %}">First Class</a>
-                                        <a class="dropdown-item" href="{% url 'search_by_class' stage='Second_Class' %}">Second Class</a>
-                                        <a class="dropdown-item" href="{% url 'search_by_class' stage='Third_Class' %}">Third Class</a>
-                                        <a class="dropdown-item" href="{% url 'search_by_class' stage='Fourth_Class' %}">Fourth Class</a>
-                                        <a class="dropdown-item" href="{% url 'search_by_class' stage='Fifth_Class' %}">Fifth Class</a>
-                                        <a class="dropdown-item" href="{% url 'search_by_class' stage='Sixth_Class' %}">Sixth Class</a>
-                                    </div>
-                                </li>
+                        <!-- Dropdown menu -->
 
+                                <!-- Megamenu -->
+                                <div class="d-none d-lg-block">    
+                                    {% include 'mega_menu.html' %}
+                                </div>
+                                <!-- Mobile menu -->
+                                <div class="d-lg-none">    
+                                    {% include 'mobile_menu.html' %}
+                                </div>
+                        <!--  -->
                                 {% if user.is_authenticated %}
                                 <li class="nav-item"><a class="nav-link" href="#">Profile</a></li>
                                 <li class="nav-item"><a class="nav-link" href= "{% url 'logout' %}">Logout</a></li>
