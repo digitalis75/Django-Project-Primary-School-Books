@@ -22,7 +22,7 @@ SUBJECT_CHOICES = (
     ('Maths', 'Maths'),
     ('Science', 'Science'),
     ('SESE', 'SESE'),
-    ('Science/SESE', 'Science/SESE'),
+    ('Science_SESE', 'Science/SESE'),
     ('Geograghy', 'Geograghy'),
     ('History', 'History'),
 )
