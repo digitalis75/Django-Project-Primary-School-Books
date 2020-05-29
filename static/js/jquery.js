@@ -16,6 +16,5 @@
 
     $("a.level").click(function(){
         $(this).toggleClass("bold");
-        $('a.level ul').hide();
     });
 });

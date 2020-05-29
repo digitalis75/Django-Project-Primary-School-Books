@@ -10,4 +10,11 @@ def do_search(request):
 
 def search_by_class(request, stage):
     products = Product.objects.filter(stage=stage)
-    return render(request, "search_results.html", {"products": products, "stage": stage})
+    return render(request, "search_results.html", {"products": products,
+                                                   "stage": stage})
+
+
+def search_by_class_subject(request, stage, subject):
+    products = Product.objects.filter(stage=stage).filter(subject=subject)
+    return render(request, "search_results.html", {"products": products,
+                  "stage": stage, "subject": subject})
