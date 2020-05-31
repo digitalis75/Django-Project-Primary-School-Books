@@ -9,8 +9,8 @@
 {% block content %}
 
 <div class="row">
-    <div class="col-9 col-sm-8 col-md-7"></div>
-    <div class="col-3 col-sm-2 col-md-3"><b>Price</b></div>
+    <div class="col-9 col-md-8 col-lg-7"></div>
+    <div class="col-3 "><b>Price</b></div>
 </div>
 
 <div class="col-12 col-md-10">
@@ -72,13 +72,17 @@
 
 <!-- Total price -->
 <div class="row">
-    <div class="col-5 col-sm-5 col-md-5 col-lg-5"></div>
-    <div class="col-4 col-sm-4 col-md-3 col-lg-2">
-        <h5><b>Subtotal: </b></h5>
+    <div class="col-1 col-sm-4 col-md-4 col-lg-3"></div>
+    <div class="col-8 col-sm-5 col-lg-4 py-2">
+        <h5><b><span class="cart-price">Subtotal( {{ product_count }} items): </span></b></h5>
     </div>
-    <div class="col-3 col-sm-3 col-md-3 col-lg-3 cart-price">
+    <div class="col-3 cart-price px-0 py-2">
         <h5><span class="cart-price"><i class="fa fa-euro"></i><b>{{ total }}</b></span></h5>
     </div>
+</div>
+
+<div class="col m-4 mx-auto checkout-btn">
+    <a href="{% url 'checkout' %}" class="btn btn-warning btn-block" role="button">Checkout</a>
 </div>
 
 {% endblock %}
