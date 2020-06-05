@@ -1,0 +1,107 @@
+    {% extends "base.html" %}
+
+    {% block page_title %}Checkout{% endblock %}
+
+    {% load static from staticfiles %}
+    {% load bootstrap_tags %}
+
+    {% block page_heading %}<h3>Checkout</h3>{% endblock %}
+
+    {% block head_js %}
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+    
+    <script type="text/javascript">
+    //<![CDATA[
+        Stripe.publishableKey = '{{ publishable }}';
+    //]]>
+    </script>
+    <script type="text/javascript" src="{% static 'js/stripe.js' %}"></script>
+    {% endblock head_js %}
+
+    {% block content %}
+
+     <!-- Total price -->
+    <div class="row">
+        <div class="col-9 col-lg-7 py-4">
+            <h5><b><span class="cart-price">Payment Total( {{ product_count }} items): </span></b></h5>
+        </div>
+        <div class="col-3 cart-price pl-0 py-4">
+            <h5><span class="cart-price"><i class="fa fa-euro"></i><b>{{ total }}</b></span></h5>
+        </div>
+    </div>
+
+    <div class="col-12 col-md-10">
+        <hr>
+    </div>
+
+    {% for item in cart_items %}
+    <div class="row">
+        <!-- Image column -->
+        <div class="col-3 col-lg-2 cart-image mt-0">
+            <a href="{% url 'product_info' item.product.slug %}">
+                <img src="{{ MEDIA_URL }}{{ item.product.image }}" class="card-img-top" alt="book cover image">
+            </a>    
+        </div>
+        <!-- Discription column -->
+        <div class="col-6 col-sm-5 col-lg-5 cart-info">
+            <p class="card-text">{{ item.product.name }}</p>
+            <p><i>( {{ item.product.publisher }} )</i></p>
+
+            {% if item.product.status == "In Stock" %}
+            <p class="success">{{ item.product.status }}</p>
+            {% else %}
+            <p class="danger">{{ item.product.status }}</p>
+            {% endif %}
+
+            <div class="row">
+                <div class="col-11 col-sm-10 col-lg-5">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Qty:</span>
+                        </div>
+                        <input type="text" class="form-control" value="{{ item.quantity }}" >
+                    </div>
+                </div>
+            </div>
+
+            <div class= "col pl-0 my-3">
+                <h5 class="card-title"><i class="fa fa-euro"></i>{{ item.product.price }}</h5>
+            </div>
+            <div class="mt-3">
+                <a href="{% url 'delete_cart_item' item.id %}" class="btn btn-outline-secondary button-style" role="button">
+                <i class="fa fa-trash-o icon-style" aria-hidden="true"></i>Delete</a>
+            </div>   
+        </div>
+    
+        <!-- Price column -->
+        <div class="col-3 cart-price px-0">
+            <h5 class="cart-price"><i class="fa fa-euro"></i><b>{{ item.product_total }}</b></h5>
+        </div>
+    </div>
+    <div class="col-12 col-md-10">
+        <hr>
+    </div>
+    {% endfor %}
+   
+
+    <form role="form" method="post" id="payment-form" action="{% url 'checkout' %}">
+        <legend>Payment Details</legend>
+
+        <div id="credit-card-errors" style="display: none;">
+            <div id="alert-message block-message error stripe-error-message"></div>
+        </div>
+
+        <div class="form-group col-md-6">
+            {{ order_form | as_bootstrap }}
+        </div>
+
+        <div class="form-group col-md-6">
+            {{ payment_form | as_bootstrap }}
+        </div>
+
+        {% csrf_token %}
+        <div class="form-group col m-5 mx-auto checkout-btn">
+            <input class=" btn btn-warning btn-block" id="submit_payment_btn" name="commit" type="submit" value="Submit Payment">
+        </div>
+    </form>
+    {% endblock %}
