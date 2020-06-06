@@ -12,7 +12,7 @@
         <!-- Book Info -->
         <div class="col-12 col-sm-8 col-md-8">
             <div class= "col pl-0 mb-3">
-                <h2 class= "book-title">{{ product.name }}</h2>
+                <h2 class= "success">{{ product.name }}</h2>
             </div>
             <div class= "col pl-0 mb-3">
                 <p><b>Publisher</b>: <span class= "text-muted"> {{ product.publisher }}</span></p>
@@ -30,13 +30,13 @@
             <div class="col pl-0 mb-3">
                 <div class="col-11 col-sm-10 pl-0">
                 {% if product.status == "In Stock" %}
-                    <form method="post" action="{% url 'adjust_cart' product.id %}">
+                    <form method="post" action="{% url 'add_to_cart' product.id %}">
                         {% csrf_token %}
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1">Qty:</span>
                             </div>
-                            <input name="quantity" type="number" min="1" max="999" class="form-control" value="">
+                            <input name="quantity" type="number" min="1" max="999" class="form-control" value="1">
                             <button class="btn btn-success button-style center" type="submit">
                                 Add to Cart
                             </button>
@@ -61,14 +61,14 @@
             <div class="tab-content border rounded border-top-0 mb-3">
                 <div id="product-details" class="container-fluid tab-pane active"><br>
                     <div class="row">
-                        <div class="col-12 col-md-6">
+                        <div class="col-12 col-md-6 px-3">
                             <p><b>School Level :</b> <span> {{ product.school_level }}</span></p>
                             <p><b>Class :</b> <span> {{ product.stage }}</span></p>
                             <p><b>Subject :</b> <span> {{ product.subject }}</span></p>
                             <p><b>Publisher :</b> <span> {{ product.publisher }}</span></p>
                             <p><b>Author :</b> <span> {{ product.author }}</span></p>
                         </div>
-                        <div class="col-12 col-md-6">
+                        <div class="col-12 col-md-6 px-3">
                             <p><b>Product :</b> <span> {{ product.product }}</span></p>
                             <p><b>Format:</b> <span> {{ product.cover_format }}</span></p>
                             <p><b>Language:</b> <span> {{ product.language }}</span></p>

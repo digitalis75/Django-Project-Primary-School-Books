@@ -17,19 +17,12 @@
                                 <p class="card-text">{{ product.name }}
                                 <span class= "text-muted"> ({{ product.publisher }})</span></p>
                             </a>
-                            <div class="text-center mt-3">
-                            {% if product.status == "In Stock" %}
-                                <form method="post" action="{% url 'add_to_cart' product.id %}">
-                                    {% csrf_token %}
-                                    <div>
-                                        <button class="btn btn-success button-style center" type="submit">Add to cart</button>
-                                    </div>
-                                </form>
-                            {% else %}
-                                <div>
-                                    <a class="btn btn-warning button-style center" href= "{% url 'product_info' product.slug %}">Awaiting Stock</a>
-                                </div>
-                            {% endif %}   
+                             <div class= "col pl-0 mb-3">
+                                {% if product.status == "In Stock" %}
+                                <p class="success">{{ product.status }}</p>
+                                {% else %}
+                                <p class="danger">{{ product.status }}</p>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
