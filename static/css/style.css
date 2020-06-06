@@ -58,6 +58,12 @@ div .col-12 {
     width: 50%;
 }
 
+.empty-cart {
+    border: 1px solid orange;
+    border-radius: 10px;
+    text-align: center;
+}
+
 @media (max-width: 400px) {
     .card-style {
         width: 8rem;
