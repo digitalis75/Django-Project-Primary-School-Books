@@ -4,10 +4,11 @@
 
 {% block page_title %}Cart{% endblock %}
 
-{% block page_heading %}<h3>Cart</h3>{% endblock %}
+{% block page_heading %}<h3 class="success">Cart</h3>{% endblock %}
 
 {% block content %}
 
+{% if cart_items %}
 <div class="row">
     <div class="col-9 col-md-8 col-lg-7"></div>
     <div class="col-3 "><b>Price</b></div>
@@ -16,7 +17,6 @@
 <div class="col-12 col-md-10">
     <hr>
 </div>
-
 
 {% for item in cart_items %}
 <div class="row">
@@ -84,5 +84,12 @@
 <div class="col m-4 mx-auto checkout-btn">
     <a href="{% url 'checkout' %}" class="btn btn-warning btn-block" role="button">Checkout</a>
 </div>
+
+{% else %}
+<div class="col-lg-10 container-fluid my-3 py-4" style="border: 1px solid orange; border-radius: 10px">
+    <h5 class="text-muted"><i>Your shopping cart is empty</i></h5>
+</div>
+
+{% endif %}
 
 {% endblock %}
