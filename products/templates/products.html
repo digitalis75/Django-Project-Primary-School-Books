@@ -3,31 +3,67 @@
 {% block page_title %}Products{% endblock %}
 
 {% block content %}
+
+<!-- Number of pages -->
+    <div class="col">
+        <span class="current">
+            Page {{ products.number }} of {{ products.paginator.num_pages }}
+        </span>
+    </div>
+
+<!-- Product card -->
     <div class="row">
-        {% for product in products %}
-            <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-xl-2 center">
-                <div class="card-deck">
-                    <div class="card h-100 text-center card-style">
+    {% for product in products %}
+        <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-xl-2 center">
+            <div class="card-deck">
+                <div class="card h-100 text-center card-style">
+                    <a href="{% url 'product_info' product.slug %}">
+                        <img src="{{ MEDIA_URL }}{{ product.image }}" class="card-img-top" alt="book cover image">
+                    </a>
+                    <div class="card-body card-text-style">
+                        <h5 class="card-title"><i class="fa fa-euro"></i>{{ product.price }}</h5>
                         <a href="{% url 'product_info' product.slug %}">
-                            <img src="{{ MEDIA_URL }}{{ product.image }}" class="card-img-top" alt="book cover image">
+                            <p class="card-text">{{ product.name }}
+                            <span class= "text-muted"> ({{ product.publisher }})</span></p>
                         </a>
-                        <div class="card-body card-text-style">
-                            <h5 class="card-title"><i class="fa fa-euro"></i>{{ product.price }}</h5>
-                            <a href="{% url 'product_info' product.slug %}">
-                                <p class="card-text">{{ product.name }}
-                                <span class= "text-muted"> ({{ product.publisher }})</span></p>
-                            </a>
-                             <div class= "col pl-0 mb-3">
-                                {% if product.status == "In Stock" %}
-                                <p class="success">{{ product.status }}</p>
-                                {% else %}
-                                <p class="danger">{{ product.status }}</p>
-                                {% endif %}
-                            </div>
+                            <div class= "col pl-0 mb-3">
+                            {% if product.status == "In Stock" %}
+                            <p class="success">{{ product.status }}</p>
+                            {% else %}
+                            <p class="danger">{{ product.status }}</p>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
             </div>
-        {% endfor %}
+        </div>
+    {% endfor %}
     </div>
+
+<!-- Pagination -->
+    {% if products.has_other_pages %}
+        <div class="row justify-content-center">
+            <ul class="pagination" style="font-size:20px;">
+                {% if products.has_previous %}
+                    <li><a href="?page={{ products.previous_page_number }}">&laquo;</a></li>
+                {% else %}
+                    <li class="disabled"><span>&laquo;</span></li>
+                {% endif %}
+
+                {% for i in products.paginator.page_range %}
+                    {% if products.number == i %}
+                        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                    {% else %}
+                        <li><a href="?page={{ i }}">{{ i }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                {% if products.has_next %}
+                    <li><a href="?page={{ products.next_page_number }}">&raquo;</a></li>
+                {% else %}
+                    <li class="disabled"><span>&raquo;</span></li>
+                {% endif %}
+            </ul>
+        </div>
+    {% endif %}
+
 {% endblock %}
