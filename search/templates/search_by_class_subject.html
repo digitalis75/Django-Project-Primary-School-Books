@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 
-{% block page_title %}Search Results for "{{ q }}"{% endblock %}
+{% block page_title %}{{ stage }} {{ subject }} Books{% endblock %}
 
 {% block content %}
     <div class= "col pl-0 my-2">
-        <h3 class="success">Showing {{ total_products }} results for "{{ q }}"</h3>
+        <h3 class="success">{{ stage }} {{ subject }} Books</h3>
     </div>
 
     <!-- Number of pages -->
