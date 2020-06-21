@@ -43,17 +43,21 @@
                         </ul>
 
                         <!-- Search --> 
-                        <div class="d-none d-lg-block col-lg-4 my-1">
+                        <div class="d-none d-lg-block col-lg-3 my-1">
                         <form class="form-inline" action="{% url 'search' %}" method="get"> 
-                            <input class="form-control form-control-sm mx-0 w-75 rounded-pill search-bar" type="text" name="q" placeholder="Search by title, subject, class, etc." aria-label="Search">
+                            <input class="form-control form-control-sm mx-0 w-100 rounded-pill search-bar" type="text" name="q" placeholder="Search by title, subject, class, etc." aria-label="Search">
                         </form>
                         </div>
 
                         <!-- Navbar links -->
                         <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                            <ul class="nav navbar-nav mr-auto mt-2 mt-lg-0">
+                            <ul class="nav navbar-nav mr-auto mt-2 mt-lg-0 d-flex align-items-center justify-content-center">
                                 <!-- Brand -->
-                                <li class="nav-item"><a class="navbar-brand left" href="#">Brand</a></li>
+                                <li class="nav-item">
+                                    <a class="navbar-brand ml-0 left" href="{% url 'index' %}">
+                                        <img src= "{% static 'img/django-project-logo3.jpg' %}">
+                                    </a>
+                                </li>
                                 <!-- Links -->
                                 <li class="nav-item"><a class="nav-link" href="{% url 'index' %}">Home</a></li>
 
