@@ -92,9 +92,7 @@
                     </form>
                     </div>
                     
-                    <!-- Page Content -->
-                    <div class="container-fluid">
-                        <!-- Django messages -->
+                     <!-- Django messages -->
                         {% if messages %}
                         
                             {% for message in messages %}
@@ -120,7 +118,9 @@
                             {% endfor %}
                             
                         {% endif %}
-                        
+
+                    <!-- Page Content -->
+                    <div class="container-fluid">
                         <div class="ml-2 my-4">
                             {% block page_heading %}{% endblock %}
                         </div>
